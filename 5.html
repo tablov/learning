@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>IfThenElse</title>
+<script>
+const questions = [
+    'Не самолёт, не птица - летит и матерится.',
+    'Без крыльев, а летает. Без головы, а поёт.',
+    'Висит груша - нельзя скушать.'
+];
+const answers = [
+    'Электрик',
+    'Ветер',
+    'Лампочка'
+];
+
+function riddle(i) {
+    let version = prompt(questions[i]);
+    if (version == answers[i]) {
+        alert('Всё верно!');
+    } else {
+        alert('Неправильно! Верный ответ: ' + answers[i]);
+    }
+}
+
+riddle(0);
+riddle(1);
+riddle(2);
+
+</script>
+</head>
+<body></body>
+</html>
