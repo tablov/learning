@@ -13,6 +13,48 @@
  * По желанию можно сделать счетчик правильных ответов.
  */
 
+let game = {
+    data: [
+        {
+            question: 'Зимой и летом одним цветом',
+            answer: [
+                'ёлочка',
+                'палочка',
+                'холодильник',
+                'кровища',
+            ]
+        },
+        {
+            question: 'Висит груша - нельзя скушать',
+            answer: [
+                'лампочка',
+                'высоко висит',
+            ]
+        },
+    ],
+    run: function(){
+        alert('Привет!');
+        alert(this.data.length); // количество загадок
+        let counter = 0; // объявляем счетчик
+        for (let qwe of this.data) {
+            let ans = prompt(qwe.question).toLowerCase();
+            let flag = true; // флаг "Нет правильного ответа"
+            for (let a of qwe.answer) {
+                if (ans == a) {
+                    alert('Ответ правильный!');
+                    flag = false;
+                    counter++; // увеличили счетчик, когда нашли правильный ответ
+                    break;
+                }
+            }
+            if (flag) alert('Ответ неправильный!');
+        }
+        alert(counter); // количество правильных ответов
+        alert('Игра окончена!');
+    }
+}
+
+game.run();
         </script>
     </head>
     <body></body>
