@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Рекурсия</title>
+        <script>
+
+function pow(x, n) {
+    if (n == 1) {
+        return x;
+    } else {
+        return x * pow(x, n - 1);
+    }
+}
+
+function pow1(x, n) {
+    let result = 1;
+    
+    // умножаем result на x n раз в цикле
+    for (let i = 0; i < n; i++) {
+        result *= x;
+    }
+    
+    return result;
+}
+
+function fact(x) {
+    if (x == 1) {
+        return x;
+    } else {
+        return x * fact(x - 1);
+    }
+}
+
+function fact1(x) {
+    let result = 1;
+    
+    for (let i = 1; i <= x; i++) {
+        result *= i;
+    }
+    
+    return result;
+}
+
+
+
+        </script>
+    </head>
+    <body></body>
+</html>

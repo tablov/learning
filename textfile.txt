@@ -98,7 +98,7 @@ String()
 Number()
 Boolean()
 Function()
-
+Math()
 
 
 
@@ -107,9 +107,17 @@ Object.assign()
 
 for ... in - для объектов - ИДЕТ ПО ЗНАЧЕНИЯМ
 for ... of - для массивов - ИДЕТ ПО КЛЮЧАМ
+оба предоставляют копии, а не сами элементы.
 
 
 
 
+LIFO - последним пришел, первым ушел. стек.
+FIFO - первым пришел, первым ушел. очередь.
 
+
+
+myLongNamedFunction
+
+new MyFunctionConstructor
 
