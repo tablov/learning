@@ -121,3 +121,55 @@ myLongNamedFunction
 
 new MyFunctionConstructor
 
+
+
+
+
+window - глобаьный объект
+свойства window:
+    location
+    history
+    document
+методы window:
+    alert
+    prompt
+    confirm
+    setTimeout
+    isFinite
+    parseInt
+    setInterval
+    eval - ИСПОЛЬЗОВАТЬ НЕЖЕЛАТЕЛЬНО!!!
+
+document - наш html-документ вместе с окружением. также эквивалентен обращению к элементу <html>
+свойства документа:
+    body
+    images
+    forms
+    links
+методы документа:
+    write - ИСПОЛЬЗОВАТЬ НЕЖЕЛАТЕЛЬНО!!!
+    
+
+
+свойства элемента (документ === тоже элемент!):
+    querySelector
+    querySelectorAll
+    getElementById
+    getElementsByTagName
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

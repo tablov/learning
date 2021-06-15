@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DOM</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            table {
+                border-collapse: collapse;
+                height: 500px;
+                width: 500px;
+                margin: 50px auto;
+            }
+            td, th {
+                height: 50px;
+                width: 50px;
+                text-align: center;
+                vertical-align: middle;
+                font: normal 20px/30px Arial;
+                position: relative;
+            }
+            tr:nth-child(odd) td:nth-child(odd),
+            tr:nth-child(even) td:nth-child(even) {
+                background: #bbb;
+            }
+            tr:nth-child(odd) td:nth-child(even),
+            tr:nth-child(even) td:nth-child(odd) {
+                background: #666;
+            }
+            td:after {
+                position: absolute;
+                top: 0;
+                width: 50px;
+                display: block;
+                font-size: 30px;
+                line-height: 50px;
+            }
+            .white_king:after {
+                content: '\2654';
+                color: white;
+            }
+            .black_king:after {
+                content: '\265a';
+                color: black;
+            }
+        </style>
+        <script>
+let chessnames = ['king', 'queen', 'bishop', 'knight', 'rook', 'pawn'];
+let chesscolors = ['white', 'black'];
+let coords = [['a','b','c','d','e','f','g','h'], [1, 2, 3, 4, 5, 6, 7, 8]];
+        
+function kingspath(begin, end) {
+    let a = document.getElementById(begin);
+    let b = document.getElementById(end);
+    if (!check_cell(a, b)) {
+        alert('Так ходить нельзя!')
+        return;
+    }
+    b.className = a.className;
+    a.className = '';
+}
+function check_cell(a, b) {
+    let name = a.className;
+    if (!name) return false;
+    let namearr = name.split('_');
+    if (!check_color(namearr[0])) return false;
+    if (!check_path(namearr, a, b)) return false;
+    return true;
+}
+function check_path(namearr, a, b) {
+    if (namearr[1] == 'king') {
+        pathes = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];
+    }
+    let begin_id = a.id;
+    let end_id = b.id;
+    let begin_idx1 = coords[0].findIndex(item => item == begin_id[0]);
+    let begin_idx2 = coords[1].findIndex(item => item == begin_id[1]);
+    let end_idx1 = coords[0].findIndex(item => item == end_id[0]);
+    let end_idx2 = coords[1].findIndex(item => item == end_id[1]);
+    for (path of pathes) {
+        if ((path[0] == begin_idx1 - end_idx1) && (path[1] == begin_idx2 - end_idx2)) {
+            if (check_aim(namearr, a, b)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+}
+function check_aim(namearr, a, b) {
+    if (b.className) return false;
+    return true;
+}
+function check_color(color) {
+    return true;
+}
+        </script>
+    </head>
+    <body>
+        <table>
+            <caption></caption>
+            <tbody>
+                <tr>
+                    <th></th>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>
+                    <th>E</th>
+                    <th>F</th>
+                    <th>G</th>
+                    <th>H</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>8</th>
+                    <td id="a8"></td>
+                    <td id="b8"></td>
+                    <td id="c8"></td>
+                    <td id="d8"></td>
+                    <td id="e8" class="black_king"></td>
+                    <td id="f8"></td>
+                    <td id="g8"></td>
+                    <td id="h8"></td>
+                    <th>8</th>
+                </tr>
+                <tr>
+                    <th>7</th>
+                    <td id="a7"></td>
+                    <td id="b7"></td>
+                    <td id="c7"></td>
+                    <td id="d7"></td>
+                    <td id="e7"></td>
+                    <td id="f7"></td>
+                    <td id="g7"></td>
+                    <td id="h7"></td>
+                    <th>7</th>
+                </tr>
+                <tr>
+                    <th>6</th>
+                    <td id="a6"></td>
+                    <td id="b6"></td>
+                    <td id="c6"></td>
+                    <td id="d6"></td>
+                    <td id="e6"></td>
+                    <td id="f6"></td>
+                    <td id="g6"></td>
+                    <td id="h6"></td>
+                    <th>6</th>
+                </tr>
+                <tr>
+                    <th>5</th>
+                    <td id="a5"></td>
+                    <td id="b5"></td>
+                    <td id="c5"></td>
+                    <td id="d5"></td>
+                    <td id="e5"></td>
+                    <td id="f5"></td>
+                    <td id="g5"></td>
+                    <td id="h5"></td>
+                    <th>5</th>
+                </tr>
+                <tr>
+                    <th>4</th>
+                    <td id="a4"></td>
+                    <td id="b4"></td>
+                    <td id="c4"></td>
+                    <td id="d4"></td>
+                    <td id="e4"></td>
+                    <td id="f4"></td>
+                    <td id="g4"></td>
+                    <td id="h4"></td>
+                    <th>4</th>
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <td id="a3"></td>
+                    <td id="b3"></td>
+                    <td id="c3"></td>
+                    <td id="d3"></td>
+                    <td id="e3"></td>
+                    <td id="f3"></td>
+                    <td id="g3"></td>
+                    <td id="h3"></td>
+                    <th>3</th>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td id="a2"></td>
+                    <td id="b2"></td>
+                    <td id="c2"></td>
+                    <td id="d2"></td>
+                    <td id="e2"></td>
+                    <td id="f2"></td>
+                    <td id="g2"></td>
+                    <td id="h2"></td>
+                    <th>2</th>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <td id="a1"></td>
+                    <td id="b1"></td>
+                    <td id="c1"></td>
+                    <td id="d1"></td>
+                    <td id="e1" class="white_king"></td>
+                    <td id="f1"></td>
+                    <td id="g1"></td>
+                    <td id="h1"></td>
+                    <th>1</th>
+                </tr>
+                <tr>
+                    <th></th>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>
+                    <th>E</th>
+                    <th>F</th>
+                    <th>G</th>
+                    <th>H</th>
+                    <th></th>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
