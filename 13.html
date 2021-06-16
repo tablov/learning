@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DOM</title>
+        <script>
+function clicker() {
+    document.addEventListener('click', (e) => {console.log(e.target);console.log('document up')});
+    document.addEventListener('click', (e) => {console.log(e.target);console.log('document down')}, true);
+    document.body.addEventListener('click', (e) => {console.log(e.target);console.log('body up')});
+    document.body.addEventListener('click', (e) => {console.log(e.target);console.log('body down')}, true);
+    document.querySelector('main').addEventListener('click', (e) => {console.log(e.target);console.log('main up')});
+    document.querySelector('main').addEventListener('click', (e) => {console.log(e.target);console.log('main down')}, true);
+    document.querySelector('div').addEventListener('click', (e) => {console.log(e.target);console.log('div up')});
+    document.querySelector('div').addEventListener('click', (e) => {console.log(e.target);console.log('div down')}, true);
+    document.querySelector('p').addEventListener('click', (e) => {console.log(e.target);console.log('p up')});
+    document.querySelector('p').addEventListener('click', (e) => {console.log(e.target);console.log('p down')}, true);
+}
+        </script>
+    </head>
+    <body>
+        <main style="background:red;padding:50px;">
+            <div style="background:green;padding:50px;">
+                <p style="background:blue;padding:50px;"></p>
+            </div>
+        </main>
+    </body>
+</html>

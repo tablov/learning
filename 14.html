@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DOM</title>
+        <style>
+p {
+    text-align: center;
+}
+.noback {
+background: none !important;
+}
+        </style>
+        <script>
+function hideBack() {
+    document.querySelector('p').className = 'noback';
+}
+function showBack() {
+    document.querySelector('p').className = '';
+}
+        </script>
+    </head>
+    <body>
+        <main style="background:red;padding:50px;">
+            <div style="background:green;padding:50px;">
+                <p style="background:blue;padding:50px;">
+                    <button type="button" id="button1" onclick="hideBack()">Кнопка 1</button>
+                    <button type="button" id="button2" onclick="showBack()">Кнопка 2</button>
+                </p>
+            </div>
+        </main>
+    </body>
+</html>
