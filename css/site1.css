@@ -28,12 +28,12 @@ a {
 }
 .bottomheader .container {
 	/*display: flex; вариант 1 */
-	/*text-align: right; вариант 2 */
+	text-align: right;
 }
 .anytext {
 	/*flex: 1 1 auto; вариант 1 */
 	font-weight: 700;
-	/*float: left; вариант 2 */
+	float: left;
 }
 .fakebutton {
 	border: 1px solid #fff;
@@ -43,7 +43,11 @@ a {
 	text-align: center;
 	display: inline-block;
 	margin: 0 0 0 20px;
+	cursor: pointer;
 	/*flex: none; вариант 1 */
+}
+.fakebutton:hover {
+	
 }
 
 /* footer */
