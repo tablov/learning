@@ -38,7 +38,7 @@ document.addEventListener('click', function(event){
         event.target.classList.add('startpoint');
         document.body.classList.add('mouseup');
     } else {
-        if (!check_path(document.querySelector('.startpoint'), event.target) || !isEmpty(event.target) {
+        if (!check_path(document.querySelector('.startpoint'), event.target) || !isEmpty(event.target)) {
             alert('Сюда ходить нельзя!');
             return;
         }
