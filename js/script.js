@@ -13,10 +13,11 @@ function isEmpty(cell) { // !!!
 }
 
 function check_path(a, b) {
+    let pathes;
     if (save_class == 'white_king' || save_class == 'black_king') {
-        let pathes = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];
+        pathes = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];
     } else if (save_class == 'white_knight' || save_class == 'black_knight') {
-        let pathes = [[-2,-1],[-2,1],[2,-1],[2,1],[-1,-2],[-1,2],[1,-2],[1,2]];
+        pathes = [[-2,-1],[-2,1],[2,-1],[2,1],[-1,-2],[-1,2],[1,-2],[1,2]];
     }
     let begin_idx1 = coords[0].findIndex(item => item == a.id[0]);
     let begin_idx2 = a.id[1];
@@ -45,13 +46,8 @@ document.addEventListener('click', function(event){
         event.target.classList.add('endpoint');
         flag = false;
         setTimeout(function(){
-            if (document.querySelector('.startpoint').classList.contains('white_king')) {
-                document.querySelector('.startpoint').classList.remove('white_king');
-                document.querySelector('.endpoint').classList.add('white_king');
-            } else {
-                document.querySelector('.startpoint').classList.remove('black_king');
-                document.querySelector('.endpoint').classList.add('black_king');
-            }
+            document.querySelector('.startpoint').classList.remove(save_class);
+            document.querySelector('.endpoint').classList.add(save_class);
             document.querySelector('.mouseup').classList.remove('mouseup');
             document.querySelector('.startpoint').classList.remove('startpoint');
             document.querySelector('.endpoint').classList.remove('endpoint');
