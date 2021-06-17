@@ -1,0 +1,26 @@
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+.topheader {
+	background: #000;
+	color: #fff;
+}
+.bottomheader {
+	background: #f93c00;
+	color: #fff;
+}
+.f_block {
+	border-top: 1px solid #e5e5e5;
+}
+.flexdesk {
+	display: flex;
+}
+aside {
+	flex: 0 0 192px;
+	margin-right: 20px;
+}
+.maincontent {
+	flex: 1 1 auto;
+}
