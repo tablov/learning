@@ -26,6 +26,16 @@ footer {
 	line-height: 26px;
 	letter-spacing: 0.05em;
 }
+footer button {
+	width: 240px;
+	height: 60px;
+	background: #5a98d0;
+	color: #fff;
+	border: none;
+	font: inherit;
+	letter-spacing: 0.05em;
+	cursor: pointer;
+}
 .topfooter {
 	padding: 90px 0 95px;
 	border-bottom: 1px solid rgba(255,255,255,.4);
@@ -37,4 +47,7 @@ footer {
 }
 .footertext {
 	width: 500px;
+}
+.footertext > div {
+	opacity: 0.6;
 }
