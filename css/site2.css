@@ -88,3 +88,26 @@ ol.container li {
 	opacity: 0.4;
 	padding: 0 0 64px;
 }
+
+/* планшетный вид */
+@media (max-width:1200px) {
+	.container {
+		max-width: 800px;
+	}
+	.middlefooter .container {
+		gap: 80px;
+	}
+	.middlefooter span {
+		padding: 0 0 0 25px;
+	}
+	.footertext {
+		width: 400px;
+	}
+	footer button {
+		width: 200px;
+		height: 40px;
+	}
+}
+@media (max-width:860px) {
+	
+}
