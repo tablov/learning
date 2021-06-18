@@ -51,3 +51,37 @@ footer button {
 .footertext > div {
 	opacity: 0.6;
 }
+/*
+ol.container {
+	display: flex;
+	list-style-type: upper-alpha;
+	gap: 32px;
+}
+ol.container li {
+	flex: 1 1 320px;
+	padding-left: 40px;
+}
+*/
+.middlefooter .container {
+	display: flex;
+	gap: 160px;
+	padding: 64px 0;
+}
+.middlefooter span {
+	flex: 1 1 320px;
+	padding: 0 0 0 40px;
+	position: relative;
+}
+.middlefooter span::before {
+	position: absolute;
+	left: 0;
+	top: 0;
+	content: 'T.';
+}
+.middlefooter span:first-child::before {
+	content: 'A.';
+}
+.middlefooter span:last-child::before {
+	content: 'E.';
+}
+
