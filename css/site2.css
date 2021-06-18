@@ -84,4 +84,7 @@ ol.container li {
 .middlefooter span:last-child::before {
 	content: 'E.';
 }
-
+.bottomfooter {
+	opacity: 0.4;
+	padding: 0 0 64px;
+}
