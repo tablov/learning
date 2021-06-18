@@ -5,6 +5,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Roboto', sans-serif;
+	min-width: 320px;
 }
 .container {
 	max-width: 1140px;
@@ -15,6 +16,7 @@ h2 {
 	font-size: 36px;
 	line-height: 46px;
 	letter-spacing: 0.05em;
+	margin: 0 0 32px;
 }
 
 /* footer */
@@ -68,6 +70,7 @@ ol.container li {
 	padding: 64px 0;
 }
 .middlefooter span {
+	display: block;
 	flex: 1 1 320px;
 	padding: 0 0 0 40px;
 	position: relative;
@@ -109,5 +112,39 @@ ol.container li {
 	}
 }
 @media (max-width:860px) {
+	.container {
+		max-width: 520px;
+	}
+	.topfooter {
+		padding: 50px 0 60px;
+	}
+	.footertext {
+		width: 340px;
+	}
+	footer button {
+		width: 130px;
+		height: 30px;
+	}
+	.middlefooter .container {
+		display: block;
+		/*
+		padding-bottom: 40px;
+		*/
+	}
+	.middlefooter span {
+		padding: 0 0 24px 60px;
+	}
+	.middlefooter span:last-child {
+		padding: 0 0 0 60px;
+	}
+}
+/* мобильный вид */
+@media (max-width:550px) {
+	.container {
+		padding: 0 15px;
+	}
+	.middlefooter .container {
+		padding: 64px 15px;
+	}
 	
 }
