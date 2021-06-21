@@ -17,8 +17,11 @@
             }
         </style>
         <script>
-            document.querySelect('.inner').addEventListener('click', function(){
-                alert('OK!');
+            document.addEventListener('DOMContentLoaded', function(){
+                alert('DOM ready!');
+                document.querySelector('.inner').addEventListener('click', function(){
+                    alert('OK!');
+                });
             });
         </script>
     </head>
