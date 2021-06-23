@@ -28,7 +28,7 @@ function moveIt(event,ball){
     } else if (b > a) {
         point.y = 100;
     }
-    console.log(point);
+    //console.log(point);
     $(ball).animate({
         'left': '+=' + point.x,
         'top': '+=' + point.y
