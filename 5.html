@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery 5</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="5.js"></script>
+    <style>
+.container {
+    margin: 50px;
+    height: 800px;
+    width: 800px;
+    background: pink;
+    position: relative;
+    font: normal 20px Arial;
+}
+button,
+.modal > div {
+    background: green;
+    width: 100px;
+    height: 30px;
+    color: white;
+    cursor: pointer;
+    border: 1px solid black;
+}
+.modal {
+    position: absolute;
+    width: 300px;
+    top: 300px;
+    left: 50%;
+    margin-left: -150px;
+    text-align: center;
+    background: white;
+    border: 1px solid black;
+}
+.screen {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: transparent;
+}
+.modal > div {
+    text-align: center;
+    margin: 20px auto;
+}
+.alerter {
+    margin-top: 500px;
+    margin-left: 500px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="screener" type="button">Click me!</button>
+        <button class="alerter" type="button">Click me!</button>
+    </div>
+</body>
+</html>
