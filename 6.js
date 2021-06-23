@@ -1,8 +1,8 @@
 $(function($) {
     let myobj = {
-        modal: '{"code":200,"success":true,"message":"Операция выполнена успешно!"}',
-        medal: '{"code":300,"success":false,"message":"Операция не выполнена!"}',
-        mindal: '{"code":500,"success":false,"message":"У нас забастовка!"}',
+        modal: '{"success":true,"message":"Операция выполнена успешно!"}',
+        medal: '{"success":false,"message":"Операция не выполнена!"}',
+        mindal: '{"success":false,"message":"У нас забастовка!"}',
     }    
     let arr = ['modal', 'medal', 'mindal']
     
