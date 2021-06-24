@@ -35,44 +35,27 @@ function makePopup(){
     let my_year = today.getFullYear();
     let my_month = today.getMonth();
     let my_weekday = today.getDay();
-    let weeks = monthLength(my_month, my_year);
+    let month_length = Math.floor((new Date(my_year, my_month + 1) - new Date(my_year, my_month)) / (1000 * 60 * 60 * 24));
+    let prev_days = ((new Date(my_year, my_month)).getDay() + 6) % 7;
+    let weeks = Math.ceil((month_length + prev_days) / 7);
+
+    let str = '<div class="header">' + MONTHNAMES[my_month] + ' ' + my_year + '</div>';
     
-    let str = '<div class="header">' + MONTHNAMES[my_month] + ' ' + my_year + '</div><table>';
-    str += '<tr><th>Пн</th><th>Вт</th><th>Ср</th><th>Чт</th><th>Пт</th><th class="holiday">Сб</th><th class="holiday">Вс</th></tr>';
+    str += '<table><tr><th>Пн</th><th>Вт</th><th>Ср</th><th>Чт</th><th>Пт</th><th class="holiday">Сб</th><th class="holiday">Вс</th></tr>';
     for (let i = 0; i < weeks; i++) {
-        str += '<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>';
+        str += '<tr>';
+        for (let j = 0; j < 7; j++) {
+            let x;
+            let y;
+            str += '<td class="' + x + '">' + y + '</td>';
+        }
+        str += '</tr>';
     }
-    str += '</table><div class="footer"></div>';
+    str += '</table>';
     
+    str += '<div class="footer"></div>';
     
     $('.modal').html(str);
-    
-    
-    
-    
-    
-    // получить и сохранить сегодняшнюю дату
-    // создать верстку попапа
-    // вставить верстку в страницу
-    // подключить события
+
     $('.screen').addClass('active');
-}
-function monthLength(month, year){
-    let a = new Date(year, month);
-    let b = new Date(year, month + 1);
-    let c = Math.floor((b - a) / (1000 * 60 * 60 * 24));
-    console.log(a);
-    console.log(b);
-    console.log(c);
-    console.log(a.getDay());
-    if (!a.getDay()) {
-        c += 6;
-    } else {
-        c += a.getDay() - 1;
-    }
-    let weeks = Math.floor(c / 7);
-    if (c % 7) {
-        weeks += 1;
-    }
-    return weeks;
 }

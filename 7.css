@@ -47,11 +47,22 @@ button {
 .modal {
     position: absolute;
     top: 150px;
-    width: 500px;
+    width: 740px;
     left: 50%;
-    margin-left: -250px;
+    margin-left: -391px;
 	padding: 20px;
     text-align: center;
     background: white;
     border: 1px solid black;
+}
+.modal table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 5px;
+}
+.modal td {
+	height: 100px;
+	width: 100px;
+	box-sizing: border-box;
+	border: 1px solid black;
 }
