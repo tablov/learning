@@ -1,5 +1,6 @@
 const MONTHNAMES = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь',];
 const TODAY = new Date();
+// заменить TODAY на дату из инпута, если она там есть
 //let birthday = null;
 function makePopup(my_year, my_month){
     let my_weekday = new Date(my_year, my_month).getDay();
@@ -65,11 +66,15 @@ function makePopup(my_year, my_month){
     });
     
     $('.holiday, .workday').click(function(){
-        alert(this.dataset.date);
-        
+        let arr = this.dataset.date.split(',');
+        arr[1] = +arr[1] + 1;
+        if (arr[1] < 10) arr[1] = '0' + arr[1];
+        if (arr[2].length < 2) arr[2] = '0' + arr[2];
+        let str = arr[2] + '-' + arr[1] + '-' + arr[0];
+        $('input').val(str);
+        $('.active').removeClass('active');
+        $('.modal').empty();
     });
-    
-    // ДД-ММ-ГГГГ
     
     $('.screen').addClass('active');
 }
@@ -77,13 +82,14 @@ $(function(){
     $('input, .getcalendar').click(function(){
         makePopup(TODAY.getFullYear(),TODAY.getMonth());
     });
-    $('.birthday').click(function(){
+    $('button.birthday').click(function(){
        // спросить у пользователя день его рождения в формате ДД-ММ-ГГГГ
-       // сохранить его в переменную birthday
+       // преобразовать его в Date и сохранить его в переменную birthday
     });
     $('.screen').click(function(e){
         if ($(e.target).hasClass('active')) {
             $('.active').removeClass('active');
+            $('.modal').empty();
         }
     });
 });
