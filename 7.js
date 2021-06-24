@@ -47,6 +47,10 @@ function makePopup(){
         for (let j = 0; j < 7; j++) {
             let x;
             let y;
+            if (j > 4)  {
+                x = 'holiday';
+            }
+            
             str += '<td class="' + x + '">' + y + '</td>';
         }
         str += '</tr>';
