@@ -1,5 +1,6 @@
 const MONTHNAMES = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь',];
 const TODAY = new Date();
+//let birthday = null;
 function makePopup(my_year, my_month){
     let my_weekday = new Date(my_year, my_month).getDay();
     let month_length = Math.floor((new Date(my_year, my_month + 1) - new Date(my_year, my_month)) / (1000 * 60 * 60 * 24));
@@ -16,13 +17,15 @@ function makePopup(my_year, my_month){
     for (let i = 0; i < weeks; i++) {
         str += '<tr>';
         for (let j = 0; j < 7; j++) {
-            let x;
+            let x = '';
             let y = (j + (i * 7)) + 1;
+            let z = my_year + ',' + my_month + ',';
             if ((y < prev_days + 1) || (y > prev_days + month_length)) {
                 y = '';
                 x = 'noourmonth';
             } else {
                 y -= prev_days;
+                z += y;
                 if (j > 4)  {
                     x = 'holiday';
                 } else {
@@ -31,8 +34,9 @@ function makePopup(my_year, my_month){
                 if ((y == TODAY.getDate()) && (my_year == TODAY.getFullYear()) && (my_month == TODAY.getMonth())) {
                     x += ' today';
                 }
+// Здесь добавляем пометку своего дня рождения классом 'birthday'
             }
-            str += '<td class="' + x + '">' + y + '</td>';
+            str += '<td class="' + x + '" data-date="' + z + '">' + y + '</td>';
         }
         str += '</tr>';
     }
@@ -60,13 +64,22 @@ function makePopup(my_year, my_month){
         makePopup(a, b);
     });
     
-    //$('.holiday, .workday').
+    $('.holiday, .workday').click(function(){
+        alert(this.dataset.date);
+        
+    });
+    
+    // ДД-ММ-ГГГГ
     
     $('.screen').addClass('active');
 }
 $(function(){
-    $('input, button').click(function(){
+    $('input, .getcalendar').click(function(){
         makePopup(TODAY.getFullYear(),TODAY.getMonth());
+    });
+    $('.birthday').click(function(){
+       // спросить у пользователя день его рождения в формате ДД-ММ-ГГГГ
+       // сохранить его в переменную birthday
     });
     $('.screen').click(function(e){
         if ($(e.target).hasClass('active')) {

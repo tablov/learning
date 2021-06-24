@@ -32,6 +32,9 @@ button {
 	height: 50px;
 	cursor: pointer;
 }
+.birthday {
+	background: red;
+}
 .screen {
     position: fixed;
     left: 0;
@@ -82,6 +85,10 @@ button {
 }
 .modal .today {
 	background: blue;
+	color: white;
+}
+.modal .birthday {
+	background: red;
 	color: white;
 }
 .modal .workday:hover,
