@@ -39,6 +39,10 @@ button {
     top: 0;
     bottom: 0;
     background: transparent;
+	display: none;
+}
+.active {
+	display: block;
 }
 .modal {
     position: absolute;
