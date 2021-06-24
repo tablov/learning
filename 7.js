@@ -34,9 +34,9 @@ function makePopup(){
     let today = new Date();
     let my_year = today.getFullYear();
     let my_month = today.getMonth();
-    let my_weekday = new Date(my_year, my_month)).getDay();
+    let my_weekday = new Date(my_year, my_month).getDay();
     let month_length = Math.floor((new Date(my_year, my_month + 1) - new Date(my_year, my_month)) / (1000 * 60 * 60 * 24));
-    let prev_days = ((my_weekday + 6) % 7;
+    let prev_days = (my_weekday + 6) % 7;
     let weeks = Math.ceil((month_length + prev_days) / 7);
 
     let str = '<div class="header">' + MONTHNAMES[my_month] + ' ' + my_year + '</div>';

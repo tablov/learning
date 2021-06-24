@@ -60,9 +60,23 @@ button {
 	border-collapse: separate;
 	border-spacing: 5px;
 }
+.modal th {
+	height: 50px;
+	width: 100px;
+	box-sizing: border-box;
+	border: none;
+	font-weight: bold;
+}
 .modal td {
 	height: 100px;
 	width: 100px;
 	box-sizing: border-box;
 	border: 1px solid black;
+}
+.modal .noourmonth {
+	border-color: transparent;
+}
+.modal .holiday {
+	border-color: red;
+	color: red;
 }
