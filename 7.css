@@ -91,6 +91,10 @@ button {
 	background: red;
 	color: white;
 }
+.modal .selected {
+	background: pink;
+	color: white;
+}
 .modal .workday:hover,
 .modal .holiday:hover {
 	background: green;

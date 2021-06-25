@@ -1,7 +1,7 @@
 const MONTHNAMES = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь',];
 const TODAY = new Date();
-// заменить TODAY на дату из инпута, если она там есть
 let birthday = null;
+
 function makePopup(my_year, my_month){
     let my_weekday = new Date(my_year, my_month).getDay();
     let month_length = Math.floor((new Date(my_year, my_month + 1) - new Date(my_year, my_month)) / (1000 * 60 * 60 * 24));
@@ -40,6 +40,7 @@ function makePopup(my_year, my_month){
                         x += ' birthday';
                     }
                 }
+                // ЕСЛИ ЕСТЬ ВЫБРАННАЯ ДАТА, ПОМЕЧАЕМ ЕЕ КЛАССОМ selected
             }
             str += '<td class="' + x + '" data-date="' + z + '">' + y + '</td>';
         }
@@ -84,6 +85,7 @@ function makePopup(my_year, my_month){
 }
 $(function(){
     $('input, .getcalendar').click(function(){
+        // ЕСЛИ В ИНПУТЕ ЕСТЬ ВЫБРАННАЯ ДАТА, СТРОИМ КАЛЕНДАРЬ ОТ НЕЕ, ЕСЛИ НЕТ - ОТ СЕГОДНЯ
         makePopup(TODAY.getFullYear(),TODAY.getMonth());
     });
     $('button.birthday').click(function(){
