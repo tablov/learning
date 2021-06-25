@@ -90,6 +90,7 @@ function makePopup(my_year, my_month){
 }
 
 $(function(){
+    $('input').mask('00-00-0000');
     $('input, .getcalendar').click(function(){
         if ($('input').val()) {
             let chooseDate = $('input').val();
