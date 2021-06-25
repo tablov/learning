@@ -1,6 +1,7 @@
 const MONTHNAMES = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь',];
 const TODAY = new Date();
 let birthday = null;
+let selected_day = null;
 
 function makePopup(my_year, my_month){
     let my_weekday = new Date(my_year, my_month).getDay();
@@ -40,7 +41,11 @@ function makePopup(my_year, my_month){
                         x += ' birthday';
                     }
                 }
-                // ЕСЛИ ЕСТЬ ВЫБРАННАЯ ДАТА, ПОМЕЧАЕМ ЕЕ КЛАССОМ selected
+                if (selected_day) {
+                    if((y == selected_day.getDate()) && (my_year == selected_day.getFullYear()) && (my_month == selected_day.getMonth())) {
+                        x += ' selected';
+                    }
+                }
             }
             str += '<td class="' + x + '" data-date="' + z + '">' + y + '</td>';
         }
@@ -83,10 +88,19 @@ function makePopup(my_year, my_month){
     
     $('.screen').addClass('active');
 }
+
 $(function(){
     $('input, .getcalendar').click(function(){
-        // ЕСЛИ В ИНПУТЕ ЕСТЬ ВЫБРАННАЯ ДАТА, СТРОИМ КАЛЕНДАРЬ ОТ НЕЕ, ЕСЛИ НЕТ - ОТ СЕГОДНЯ
-        makePopup(TODAY.getFullYear(),TODAY.getMonth());
+        if ($('input').val()) {
+            let chooseDate = $('input').val();
+            let choose_year = chooseDate.slice(6, 10);
+            let choose_month = chooseDate.substring(3, 5);
+            let choose_date = chooseDate.substr(0, 2);
+            selected_day = new Date(choose_year, choose_month - 1, choose_date);
+            makePopup(selected_day.getFullYear(),selected_day.getMonth());
+        } else {
+            makePopup(TODAY.getFullYear(),TODAY.getMonth());
+        }
     });
     $('button.birthday').click(function(){
         let b = prompt('Привет! Когда у тебя день рождения? Введи в формате ДД-ММ-ГГГГ');
