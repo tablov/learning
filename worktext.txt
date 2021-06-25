@@ -1,3 +1,4 @@
+
 000
 
 
@@ -18,4 +19,3 @@ git commit -a -m "КОММЕНТАРИЙ"
 git push --set-upstream origin <ИМЯ ВЕТКИ>
 если в эту ветку уже пушили, команда
 git push
-
