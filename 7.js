@@ -37,7 +37,7 @@ function makePopup(my_year, my_month){
                     x += ' today';
                 }
                 if (birthday) {
-                    if ((y == birthday.getDate()) && (my_month == birthday.getMonth())) {
+                    if ((y == birthday.getDate()) && (my_month == birthday.getMonth()) && (my_year >= birthday.getFullYear())) {
                         x += ' birthday';
                     }
                 }
