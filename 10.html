@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Генератор паролей</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                document.querySelector('button').addEventListener('click', getPassword);
+            });
+            function getPassword(){
+                let n = parseInt(document.querySelector('input').value);
+                if ((isNaN(n)) || (n <= 0)) {
+                    alert('Неверная длина пароля!');
+                    return;
+                }
+                let pass = '';
+                let sym = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_!@#$%^&+-=';
+                for (let i = 0; i < n; i++) {
+                    pass += sym.charAt(Math.floor(Math.random() * sym.length));
+                }
+                document.querySelector('#aim').innerHTML = 'Ваш пароль - <b>' + pass + '</b>';
+                
+            }
+        </script>
+	</head>
+	<body>
+		<p>Укажите длину пароля</p>
+        <input type="number">
+        <br>
+        <br>
+        <button type="button">Генерировать</button>
+        <p id="aim"></p>
+	</body>
+</html>
