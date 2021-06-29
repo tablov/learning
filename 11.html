@@ -16,17 +16,12 @@ body {
     position: relative;
     width: 417px;
     height: 570px;
-    /*overflow: hidden;*/
-}
-.slide-rail {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 10000px;
-    height: 570px;
+    overflow: hidden;
 }
 .slide {
-    float:left;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 .rule {
     position: absolute;
@@ -42,7 +37,8 @@ body {
 .rule span {
     position: absolute;
     top: calc(50% - 17px);
-    cursor: pointer;
+    cursor: pointer; /* курсор показывает, что тут активный элемент */
+    user-select: none; /* запрещаем выделение текста - кнопка не "синеет", как по ней ни кликай*/
     font-size: 30px;
     width: 34px;
     text-align: center;
@@ -59,48 +55,80 @@ body {
         <script src="jquery-3.6.0.min.js"></script>
         <script>
 $(function(){
-    sliderRun();
+    sliderRun(); // запускаем нашу программу, когда готов DOM
 });
 function sliderRun() {
-    let s = $('.slide-rail');
-    let w = $('.slide').width();
-    s.css('width', (w * $('.slide').length) + 'px');
-    let t = setInterval(function(){
-        if (s.width() + parseInt(s.css('left')) > w) {
-            s.animate({left: '-=' + w}, 1000);
-        } else {
-            //clearInterval(t);
-            s.append($('.slide').eq(0).clone());
-            console.log($('.slide').length);
-            s.css('width', parseInt(s.css('width')) + w + 'px');
-            console.log(s.css('width'));
-            s.animate({left: '-=' + w}, 1000);
-            console.log(s.css('left'));
-            s.css('left', 0);
-            console.log('000');
-            console.log(s.css('left'));
-            s.css('width', parseInt(s.css('width')) - w + 'px');
-            console.log(s.css('width'));
-            $('.slide:last-child').remove();
-            console.log($('.slide').length);
+    const w = $('.slide').width(); // ширина слайда - самая важная константа, ее везде используем
+    let current = 0; // указатели на текущий слайд и его соседей слева и справа
+    let left = -1; // -1 соответствует length-1, то есть последнему слайду из набора
+    let right = 1;
+    let flag1 = false; // три флага блокировки, так как у нас три независимых асинхронных процесса, исхода которых необходимо ждать
+    let flag2 = false;
+    let flag3 = false;
+    $('.slide').eq(current).css('left', 0);
+    $('.slide').eq(left).css('left', -w); // располагаем левый и правый слайды по бокам от основного. поскольку overflow: hidden - их не видно. используем одно и то же свойство left для всех слайдов.
+    $('.slide').eq(right).css('left', w);
+    function moveLeft() {
+        if (flag1 || flag2 || flag3) return; // проверяем флаги, если хоть один не убран, отказываемся действовать. это не позволит одновременно выполняться вызовам от постоянной прокрутки и кнопок или от двух кнопок сразу.
+        flag1 = true; // поднимаем все флаги, чтобы не допустить нового вызова, пока не отработал текущий
+        flag2 = true;
+        flag3 = true;
+        left = current; // текущий слайд становится левым и уезжает налево
+        $('.slide').eq(left).animate({left: -w}, 1000, function(){
+            flag1 = false; // когда анимация отработала, один флаг убирается
+        });
+        current = right; // правый становится текущим и выезжает справа
+        $('.slide').eq(current).animate({left: 0}, 1000, function(){
+            flag2 = false; // когда анимация отработала, еще один флаг убирается
+        });
+        right++; // переводим правый указатель еще правее
+        if (right > $('.slide').length - 2) {
+            right -= $('.slide').length; // если значение указателя больше индекса предпоследнего слайда, уменьшаем на его количество слайдов: последний слайд получается по индексу -1.
         }
-    }, 3000);
+        $('.slide').eq(right).css('left', w); // устанавливаем правый слайд в готовности справа. поскольку он не должен быть виден - без анимации.
+        flag3 = false; // убираем третий флаг
+    }
+    function moveRight() { // все аналогично предыдущей функции, только в обратную сторону
+        if (flag1 || flag2 || flag3) return;
+        flag1 = true;
+        flag2 = true;
+        flag3 = true;
+        right = current;
+        $('.slide').eq(right).animate({left: w}, 1000, function(){
+            flag1 = false;
+        });
+        current = left;
+        $('.slide').eq(current).animate({left: 0}, 1000, function(){
+            flag2 = false;
+        });
+        left--;
+        if (left < -1) {
+            left += $('.slide').length;
+        }
+        $('.slide').eq(left).css('left', -w);
+        flag3 = false;
+    }
+    setTimeout(everScroll, 3000); // назначаем вызов вспомогательной функции с задержкой
+    function everScroll() {
+        moveLeft(); // вспомогательная функция вызывает прокрутку влево
+        setTimeout(everScroll, 3000); // и назначает новый вызов себя с задержкой. это не рекурсия, так как функция сразу и заканчивает работу, а не ждет результатов вызова.
+    }
+    $('.left').click(moveLeft); // на кнопки навещиваем вызов прокрутки влево и вправо соответственно
+    $('.right').click(moveRight);
 }
         </script>
 	</head>
 	<body>
 		<div class="container">
             <div class="slider">
-                <div class="slide-rail">
-                    <div class="slide">
-                        <img src="1.png" alt="1.png">
-                    </div>
-                    <div class="slide">
-                        <img src="2.png" alt="2.png">
-                    </div>
-                    <div class="slide">
-                        <img src="3.png" alt="3.png">
-                    </div>
+                <div class="slide">
+                    <img src="1.png" alt="1.png">
+                </div>
+                <div class="slide">
+                    <img src="2.png" alt="2.png">
+                </div>
+                <div class="slide">
+                    <img src="3.png" alt="3.png">
                 </div>
                 <div class="rule">
                     <span class="left"><</span>
