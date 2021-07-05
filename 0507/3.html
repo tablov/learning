@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Базовые элементы JS</title>
+    <style>
+        body {
+            margin: 0;
+            font: normal 16px/24px Arial;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td,th{border:1px solid black;padding: 5px 10px 5px 10px;}
+    </style>
+    <script>
+        let a = 1;
+        let b = 2;
+        let c = 3;
+        function f1(){
+            alert('It works!');
+        }
+        function f2(x){
+            alert(x * 2);
+        }
+        function f3(arg1, arg2){
+            alert(arg1 + arg2);
+        }
+    </script>
+</head>
+<body>
+    <h1>Базовые элементы JS</h1>
+    <p>Функция без аргументов, ничего не возвращает<br>
+        <pre>
+            function f1(){
+                alert('It works!');
+            }
+            // когда мы ее вызываем, выскакивает модальное окно 'It works!'
+        </pre>
+    </p>
+    <p>Функция с одним аргументом, ничего не возвращает<br>
+        <pre>
+            function f2(x){
+                alert(x * 2);
+            }
+            // когда мы ее вызываем, выскакивает модальное окно c удвоенным значением аргумента
+        </pre>
+    </p>
+    <p>Функция с двумя аргументами, ничего не возвращает<br>
+        <pre>
+            function f3(arg1, arg2){
+                alert(arg1 + arg2);
+            }
+            // когда мы ее вызываем, выскакивает модальное окно c суммой аргументов
+        </pre>
+    </p>
+</body>
+</html>
